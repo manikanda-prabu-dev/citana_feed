@@ -25,12 +25,12 @@ role :any;
     setTimeout(()=>{
       Swal.fire({
         title: 'Are you sure?',
-        text: "did you want to Logout",
+        text: "want to Logout?",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'yes, logout'
+        confirmButtonText: 'yes, Logout'
       }).then((result) => {
         if (result.value) {
           this.cookie.deleteAll();

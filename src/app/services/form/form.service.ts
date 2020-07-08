@@ -6,6 +6,7 @@ import { Observable  } from "rxjs";
 })
 export class FormService {
   public url:any = "https://cintana.herokuapp.com/"
+  // public url:any = "http://localhost:9090/"
   constructor(private http : HttpClient ) {}
 
 

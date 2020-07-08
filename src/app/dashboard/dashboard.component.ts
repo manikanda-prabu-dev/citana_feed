@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
   userComment: any;
   replyTextBox: boolean = false;
   userName;
-  any;
+
   public show: boolean = false;
   constructor(
     private Title: Title,
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit {
     if (this.cookie.check('login') == false) {
         const user = {
           role : 'guest',
-          name : 'guest'
+          name : 'Cintana'
         };
         this.cookie.set("login" , JSON.stringify(user));
         const Login = this.cookie.get('login');
@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit {
     setTimeout(() => {
       loader.hidden = true;
       this.show = true;
-    }, 2500);
+    }, 2000);
 
     this.getPosts();
   }
@@ -81,6 +81,7 @@ export class DashboardComponent implements OnInit {
     this.Router.navigate(['/login']);
   }
 
+  //admin post creation
   createPost() {
     console.log('post form data', this.publishPost.value);
     const post = {
@@ -103,6 +104,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
+//getting dashboard data
   getPosts() {
     //get posts in dashboard
     this.pulishpostService.getPublishedPosts().subscribe((posts) => {
@@ -111,6 +114,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
+//user comment posting
   postComment(userComment, post) {
     console.log('user post', post);
     const comment_data = {
@@ -125,9 +130,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+//admin replying function
   relyComment(allComments, replyComment) {
     console.log('all comment', allComments);
     console.log('replyComment', replyComment);
+
+
     allComments.forEach((singleCmmnt) => {
 
      if(replyComment.reply == true){
